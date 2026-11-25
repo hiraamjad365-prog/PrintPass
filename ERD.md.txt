@@ -1,33 +1,31 @@
-
-```mermaid
 erDiagram
-    USER ||--o| STUDENT : has
-    USER ||--o| STAFF : has
-    USER ||--o{ ACTIVITY_LOG : performs
-    USER ||--o{ NOTIFICATION : receives
+    USER ||--o| STUDENT : "has"
+    USER ||--o| STAFF : "has"
+    USER ||--o{ ACTIVITY_LOG : "performs"
+    USER ||--o{ NOTIFICATION : "receives"
 
-    STUDENT ||--o{ ORDERS : places
-    STAFF o|--o{ ORDERS : processes
+    STUDENT ||--o{ ORDERS : "places"
+    STAFF o|--o{ ORDERS : "processes"
 
-    CATEGORY ||--o{ PRODUCT : contains
-    PRODUCT ||--o| BOOK_DETAILS : has
+    CATEGORY ||--o{ PRODUCT : "contains"
+    PRODUCT ||--o| BOOK_DETAILS : "has"
 
-    ORDERS ||--o{ ORDER_ITEM : contains
-    PRODUCT ||--o{ ORDER_ITEM : included_in
+    ORDERS ||--o{ ORDER_ITEM : "contains"
+    PRODUCT ||--o{ ORDER_ITEM : "included in"
 
-    PRODUCT ||--o{ INVENTORY_TRANSACTION : tracks
-    STAFF ||--o{ INVENTORY_TRANSACTION : records
-    ORDER_ITEM o|--o{ INVENTORY_TRANSACTION : generates
+    PRODUCT ||--o{ INVENTORY_TRANSACTION : "tracks"
+    STAFF ||--o{ INVENTORY_TRANSACTION : "records"
+    ORDER_ITEM o|--o{ INVENTORY_TRANSACTION : "generates"
 
-    ORDERS ||--o{ PRINT_JOB : contains
-    PRICE_RULE ||--o{ PRINT_JOB : determines
+    ORDERS ||--o{ PRINT_JOB : "contains"
+    PRICE_RULE ||--o{ PRINT_JOB : "determines"
 
-    PRINT_JOB ||--o| QUEUE_TICKET : receives
-    PRINT_JOB ||--o{ NOTIFICATION : generates
+    PRINT_JOB ||--o| QUEUE_TICKET : "receives"
+    PRINT_JOB ||--o{ NOTIFICATION : "generates"
 
-    ORDERS ||--o{ PAYMENT : has
-    STAFF o|--o{ PAYMENT : verifies
-    PAYMENT ||--o| RECEIPT : generates
+    ORDERS ||--o{ PAYMENT : "has"
+    STAFF o|--o{ PAYMENT : "verifies"
+    PAYMENT ||--o| RECEIPT : "generates"
 
     USER {
         int user_id PK
@@ -72,7 +70,7 @@ erDiagram
     }
 
     BOOK_DETAILS {
-        int product_id PK, FK
+        int product_id PK "FK"
         varchar ISBN
         varchar author
         varchar publisher
@@ -181,4 +179,3 @@ erDiagram
         int record_id
         datetime activity_time
     }
-```
